@@ -3,6 +3,9 @@ import * as Yup from 'yup'
 import Input from '../components/Input'
 import Textarea from '../components/Textarea'
 
+import { createProduct } from '../api/Product'
+
+
 import { useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
 
@@ -14,17 +17,20 @@ const Product = () => {
         initialValues: {
             title: 'Test Title',
             content: 'minimum8minimum8minimum8minimum8minimum8minimum8minimum8minimum8minimum8minimum8minimum8minimum8minimum8minimum8minimum8minimum8minimum8minimum8minimum8',
-            picture: ''
+            picture: '',
+            price: '5'
         },
         validationSchema: Yup.object({
             title: Yup.string()
                 .required('Your title is required (test)'),
             content: Yup.string()
                 .required('Content is required')
-                .min(50, 'Content trop court')
+                .min(50, 'Content trop court'),
+            content: Yup.string()
+                .required('Price is required')
         }),
         onSubmit: async (values) => {
-
+            createProduct(values)
         },
     })
 
@@ -47,6 +53,14 @@ const Product = () => {
                 error={formik.errors.content}
                 row="10"
             /> 
+              <Input
+                type="number"
+                name="price"
+                placeholder="Price"
+                value={formik.values.price}
+                handleChange={formik.handleChange}
+                error={formik.errors.price}
+            />
             <Input
               type="file"
               name="picture"
