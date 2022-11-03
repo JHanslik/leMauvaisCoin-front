@@ -1,5 +1,5 @@
 const signup = async (user) => {
-    const request = await fetch('http://localhost:5000/auth/signup', {
+    const request = await fetch(`${process.env.REACT_APP_API_URL}auth/signup`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -13,7 +13,7 @@ const signup = async (user) => {
 }
 
 const login = async (user) => {
-    const request = await fetch('http://localhost:5000/auth/login', {
+    const request = await fetch(`${process.env.REACT_APP_API_URL}auth/login`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
