@@ -1,7 +1,7 @@
-
+const token = localStorage.getItem('token')
 
 const createMessage = async (user) => {
-    const request = await fetch(`${process.env.REACT_APP_API_URL}/${user}/messages`, {
+    const request = await fetch(`${process.env.REACT_APP_API_URL}/:id/messages`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
