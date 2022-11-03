@@ -2,19 +2,22 @@ import { Link } from 'react-router-dom'
 
 const Header = () => {
   return (
-    <header>
+    <header className='flex justify-between mb-10 pb-5 border-b-2 bg-teal-600 p-5'>
       <Link to='/'>
-        <span>Le Mauvais Coin</span>
+        <span className='font-semibold text-2xl text-white'>Le Mauvais Coin</span>
       </Link>
-      <nav>
-        <Link to='/login'>
+      <nav className='flex items-center gap-10'>
+        <Link to='/login'  className='text-white hover:bg-teal-700 rounded px-3.5 py-1.5'>
           Log In
         </Link>
-        <Link to='/signup'>
+        <Link to='/signup'  className='text-white hover:bg-teal-700 rounded px-3.5 py-1.5'>
           Sign Up
         </Link>
-        <Link to='/create-product'>
+        <Link to='/create-product' className='text-white hover:bg-teal-700 rounded px-3.5 py-1.5'>
           Create Product
+        </Link>
+        <Link to='/create-message' className='text-white hover:bg-teal-700 rounded px-3.5 py-1.5'>
+          Create Message
         </Link>
       </nav>
     </header>

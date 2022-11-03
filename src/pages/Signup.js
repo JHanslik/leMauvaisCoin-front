@@ -3,6 +3,9 @@ import * as Yup from 'yup'
 import Input from '../components/Input'
 import { signup } from '../api/Auth'
 
+import Button from '../components/Button'
+
+
 const Signup = () => {
     const formik = useFormik({
         initialValues: {
@@ -53,7 +56,7 @@ const Signup = () => {
                 handleChange={formik.handleChange}
                 error={formik.errors.password}
             />
-            <button type="submit">Envoyer</button>
+            <Button text="Envoyer" type="submit"/>
         </form>
     )
 }

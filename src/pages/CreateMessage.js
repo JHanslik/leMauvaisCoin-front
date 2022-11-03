@@ -3,15 +3,13 @@ import * as Yup from 'yup'
 import Input from '../components/Input'
 import Textarea from '../components/Textarea'
 
-import { createProduct } from '../api/Product'
+import { createMessage } from '../api/Message'
 
 import { useEffect, useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import { UserContext } from '../contexts/User'
-
 import Button from '../components/Button'
-
 
 const Product = () => {
     const navigate = useNavigate()
@@ -27,8 +25,7 @@ const Product = () => {
         initialValues: {
             title: 'Test Title',
             content: 'minimum8minimum8minimum8minimum8minimum8minimum8minimum8minimum8minimum8minimum8minimum8minimum8minimum8minimum8minimum8minimum8minimum8minimum8minimum8',
-            picture: '',
-            price: '5'
+            receiverId: '2'
         },
         validationSchema: Yup.object({
             title: Yup.string()
@@ -36,11 +33,11 @@ const Product = () => {
             content: Yup.string()
                 .required('Content is required')
                 .min(50, 'Content trop court'),
-            price: Yup.string()
-                .required('Price is required')
+            receiverId: Yup.string()
+                .required('Receiver is required')
         }),
         onSubmit: (values) => {
-            createProduct(values) 
+            createMessage(values) 
         },
     })
 
@@ -63,22 +60,8 @@ const Product = () => {
                 error={formik.errors.content}
                 row="10"
             /> 
-              <Input
-                type="number"
-                name="price"
-                placeholder="Price"
-                value={formik.values.price}
-                handleChange={formik.handleChange}
-                error={formik.errors.price}
-            />
-            <Input
-              type="file"
-              name="picture"
-              value={formik.values.picture}
-              handleChange={formik.handleChange}
-            />
+            
             <Button text="Envoyer" type="submit"/>
-
         </form>
     )
 }

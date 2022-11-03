@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router-dom'
 
 import { login } from '../api/Auth'
 import { UserContext } from '../contexts/User'
+import Button from '../components/Button'
 
 const Login = () => {
     const navigate = useNavigate()
@@ -51,7 +52,7 @@ const Login = () => {
                 handleChange={formik.handleChange}
                 error={formik.errors.password}
             />
-            <button type="submit">Envoyer</button>
+            <Button text="Envoyer" type="submit"/>
         </form>
     )
 }
