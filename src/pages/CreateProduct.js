@@ -16,31 +16,31 @@ import Button from '../components/Button'
 const Product = () => {
     const navigate = useNavigate()
     const { user } = useContext(UserContext)
-  
+
     useEffect(() => {
-      if (!user) {
-        navigate('/login')
-      }
+        if (!user) {
+            navigate('/login')
+        }
+        // eslint-disable-next-line
     }, [user])
 
     const formik = useFormik({
         initialValues: {
             title: 'Test Title',
-            content: 'minimum8minimum8minimum8minimum8minimum8minimum8minimum8minimum8minimum8minimum8minimum8minimum8minimum8minimum8minimum8minimum8minimum8minimum8minimum8',
+            content:
+                'minimum8minimum8minimum8minimum8minimum8minimum8minimum8minimum8minimum8minimum8minimum8minimum8minimum8minimum8minimum8minimum8minimum8minimum8minimum8',
             picture: '',
-            price: '5'
+            price: '5',
         },
         validationSchema: Yup.object({
-            title: Yup.string()
-                .required('Your title is required (test)'),
+            title: Yup.string().required('Your title is required (test)'),
             content: Yup.string()
                 .required('Content is required')
                 .min(50, 'Content trop court'),
-            price: Yup.string()
-                .required('Price is required')
+            price: Yup.string().required('Price is required'),
         }),
-        onSubmit: (values) => {
-            createProduct(values) 
+        onSubmit: async (values) => {
+            await createProduct(values)
         },
     })
 
@@ -62,8 +62,8 @@ const Product = () => {
                 handleChange={formik.handleChange}
                 error={formik.errors.content}
                 row="10"
-            /> 
-              <Input
+            />
+            <Input
                 type="number"
                 name="price"
                 placeholder="Price"
@@ -72,10 +72,10 @@ const Product = () => {
                 error={formik.errors.price}
             />
             <Input
-              type="file"
-              name="picture"
-              value={formik.values.picture}
-              handleChange={formik.handleChange}
+                type="file"
+                name="picture"
+                value={formik.values.picture}
+                handleChange={formik.handleChange}
             />
             <Button text="Envoyer" type="submit"/>
 
