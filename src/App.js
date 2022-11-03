@@ -7,14 +7,17 @@ import ProductMessages from './pages/ProductMessages'
 import Home from './pages/Home'
 import Signup from './pages/Signup'
 import NotFound from './pages/NotFound'
+import Header from './components/Header'
 
 const App = () => {
     return (
         <BrowserRouter>
+        <Header/>
             <UserContextProvider>
                 <Routes>
                     <Route path="/" element={<Home />} />
                     <Route path="/product" element={<Product />} />
+                    <Route path="/create-product" element={<Product />} />
                     <Route path="/signup" element={<Signup />} />
                     <Route path="/message-sent" element={<MessagesSent />} />
                     <Route
