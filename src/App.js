@@ -1,11 +1,11 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import { Login } from './pages/Login'
-import { MessagesSent } from './pages/MessagesSent'
-import { Product } from './pages/Product'
-import { ProductMessages } from './pages/ProductMessages'
-import { Home } from './pages/Home'
-import { Signup } from './pages/Signup'
-import { NotFound } from './pages/NotFound'
+import  Login  from './pages/Login'
+import  MessagesSent  from './pages/MessagesSent'
+import  Product  from './pages/Product'
+import  ProductMessages  from './pages/ProductMessages'
+import  Home  from './pages/Home'
+import  Signup  from './pages/Signup'
+import  NotFound  from './pages/NotFound'
 
 const App = () => {
     return (

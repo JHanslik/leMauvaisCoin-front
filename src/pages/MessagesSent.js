@@ -1,7 +1,8 @@
 import React from 'react'
 
-export const MessagesSent = () => {
+const MessagesSent = () => {
   return (
     <div>MessagesSent</div>
   )
 }
+export default MessagesSent

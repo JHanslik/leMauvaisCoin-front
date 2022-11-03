@@ -1,7 +1,8 @@
 import React from 'react'
 
-export const ProductMessages = () => {
+const ProductMessages = () => {
   return (
     <div>ProductMessages</div>
   )
 }
+export default ProductMessages
