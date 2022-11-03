@@ -5,13 +5,20 @@ import Textarea from '../components/Textarea'
 
 import { createProduct } from '../api/Product'
 
-
-import { useContext } from 'react'
+import { useEffect, useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import { UserContext } from '../contexts/User'
 
 const Product = () => {
+    const navigate = useNavigate()
+    const { user } = useContext(UserContext)
+  
+    useEffect(() => {
+      if (!user) {
+        navigate('/login')
+      }
+    }, [user])
 
     const formik = useFormik({
         initialValues: {
@@ -26,11 +33,11 @@ const Product = () => {
             content: Yup.string()
                 .required('Content is required')
                 .min(50, 'Content trop court'),
-            content: Yup.string()
+            price: Yup.string()
                 .required('Price is required')
         }),
-        onSubmit: async (values) => {
-            createProduct(values)
+        onSubmit: (values) => {
+            createProduct(values) 
         },
     })
 

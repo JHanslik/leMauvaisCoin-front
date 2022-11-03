@@ -13,6 +13,9 @@ const Header = () => {
         <Link to='/signup'>
           Sign Up
         </Link>
+        <Link to='/create-product'>
+          Create Product
+        </Link>
       </nav>
     </header>
   )

@@ -1,5 +1,5 @@
 const createProduct = async (user) => {
-    const request = await fetch(`${process.env.REACT_APP_API_URL}products`, {
+    const request = await fetch(`${process.env.REACT_APP_API_URL}products/`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -12,4 +12,4 @@ const createProduct = async (user) => {
     return response
 }
 
-export { createProduct}
+export { createProduct }
