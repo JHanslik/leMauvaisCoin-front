@@ -36,8 +36,8 @@ const Product = () => {
                 .min(50, 'Content trop court'),
             price: Yup.string().required('Price is required'),
         }),
-        onSubmit: (values) => {
-            createProduct(values)
+        onSubmit: async (values) => {
+            await createProduct(values)
         },
     })
 
