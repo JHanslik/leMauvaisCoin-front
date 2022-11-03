@@ -1,25 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import  Login  from './pages/Login'
+import  MessagesSent  from './pages/MessagesSent'
+import  Product  from './pages/Product'
+import  ProductMessages  from './pages/ProductMessages'
+import  Home  from './pages/Home'
+import  Signup  from './pages/Signup'
+import  NotFound  from './pages/NotFound'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const App = () => {
+    return (
+        <BrowserRouter>
+            <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/product" element={<Product />} />
+                <Route path="/signup" element={<Signup />} />
+                <Route path="/message-sent" element={<MessagesSent />} />
+                <Route path="/product-messages" element={<ProductMessages />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/not-found" element={<NotFound />} />
+            </Routes>
+        </BrowserRouter>
+    )
 }
-
-export default App;
+export default App
