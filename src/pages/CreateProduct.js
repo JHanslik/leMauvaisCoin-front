@@ -40,6 +40,7 @@ const Product = () => {
         }),
         onSubmit: async (values) => {
             await createProduct(values, token)
+
             // await createProductImage(values, token)
         },
     })
