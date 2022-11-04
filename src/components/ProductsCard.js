@@ -1,10 +1,9 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-
 const ProductArticle = ({ product }) => {
     return (
-        <section>
+        <Link to={`/products/${product.id}`}>
             <div
                 href=""
                 className="flex  bg-gray-800 rounded-lg border shadow-xl "
@@ -29,16 +28,10 @@ const ProductArticle = ({ product }) => {
                         <span className="text-5xl flex justify-end font-bold text-[whitesmoke] p-5">
                             {product.price / 100} $
                         </span>
-                        <Link
-                            to={`/products/${product.id}/messages`}
-                            className="text-white bg-blue-700 mx-5 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-xl px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                        >
-                            Send message
-                        </Link>
                     </div>
                 </div>
             </div>
-        </section>
+        </Link>
     )
 }
 

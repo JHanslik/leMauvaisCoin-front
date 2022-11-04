@@ -54,10 +54,10 @@ const Product = () => {
                 content: values.content, 
                 receiverId: product?.UserId,
             }
-            createMessage(data)
+            createMessage(data, product.id)
         },
     })
-
+    
 
     if (!product) {
         return <p>loading</p>

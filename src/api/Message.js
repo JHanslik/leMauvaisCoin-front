@@ -1,15 +1,15 @@
 const token = localStorage.getItem('token')
 
-const createMessage = async (user) => {
+const createMessage = async (values, id) => {
     const request = await fetch(
-        `${process.env.REACT_APP_API_URL}products/1/messages`,
+        `${process.env.REACT_APP_API_URL}products/${id}/messages`,
         {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
                 Authorization: `Bearer ${token}`,
             },
-            body: JSON.stringify(user),
+            body: JSON.stringify(values),
         }
     )
 
