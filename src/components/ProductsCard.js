@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-const ProductArticle = ({ product }) => {
+const ProductsCard = ({ product }) => {
     return (
         <Link to={`/products/${product.id}`}>
             <div
@@ -35,4 +35,4 @@ const ProductArticle = ({ product }) => {
     )
 }
 
-export default ProductArticle
+export default ProductsCard

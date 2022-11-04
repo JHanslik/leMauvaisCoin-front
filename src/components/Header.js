@@ -27,6 +27,12 @@ const Header = () => {
                 >
                     Create Product
                 </Link>
+                <Link
+                    to="/user"
+                    className="text-white hover:bg-teal-700 rounded px-3.5 py-1.5"
+                >
+                    USER
+                </Link>
             </nav>
         </header>
     )

@@ -10,6 +10,7 @@ import Home from './pages/Home'
 import Signup from './pages/Signup'
 import NotFound from './pages/NotFound'
 import Header from './components/Header'
+import User from './pages/User'
 
 const App = () => {
     return (
@@ -31,6 +32,7 @@ const App = () => {
                         element={<ProductMessages />}
                     />
                     <Route path="/login" element={<Login />} />
+                    <Route path="/user" element={<User />} />
                     <Route path="/not-found" element={<NotFound />} />
                 </Routes>
             </UserContextProvider>

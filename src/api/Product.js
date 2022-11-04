@@ -14,7 +14,6 @@ const createProduct = async (value, token) => {
 }
 
 const createProductImage = async (value, token) => {
-    console.log('on')
     const request = await fetch(
         `${process.env.REACT_APP_API_URL}products/photos`,
         {
@@ -26,10 +25,9 @@ const createProductImage = async (value, token) => {
             body: JSON.stringify(value),
         }
     )
-    console.log("m'appel")
 
     const response = await request.json()
-    console.log("l'ovni")
+
     console.log(response)
     return response
 }
