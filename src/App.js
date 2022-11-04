@@ -18,7 +18,7 @@ const App = () => {
             <UserContextProvider>
                 <Routes>
                     <Route path="/" element={<Home />} />
-                    <Route path="/product/:id" element={<Product />} />
+                    <Route path="/products/:id" element={<Product />} />
                     <Route path="/create-product" element={<CreateProduct />} />
                     <Route path="/signup" element={<Signup />} />
                     <Route path="/message-sent" element={<MessagesSent />} />
