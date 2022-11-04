@@ -3,7 +3,7 @@ import * as Yup from 'yup'
 import Input from '../components/Input'
 import Textarea from '../components/Textarea'
 
-import { createProduct, createProductImage } from '../api/Product'
+import { createProduct } from '../api/Product'
 
 import { useEffect, useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
@@ -14,7 +14,7 @@ import Button from '../components/Button'
 
 const Product = () => {
     const navigate = useNavigate()
-    const { user } = useContext(UserContext)
+    const { user, token } = useContext(UserContext)
 
     useEffect(() => {
         if (!user) {
@@ -39,8 +39,8 @@ const Product = () => {
             price: Yup.string().required('Price is required'),
         }),
         onSubmit: async (values) => {
-            await createProduct(values)
-            // await createProductImage(values)
+            await createProduct(values, token)
+            // await createProductImage(values, token)
         },
     })
 

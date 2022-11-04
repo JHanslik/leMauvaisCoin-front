@@ -35,7 +35,7 @@ const Login = () => {
             }
         },
     })
-
+    console.log(formik.values)
     return (
         <form onSubmit={formik.handleSubmit}>
             <Input

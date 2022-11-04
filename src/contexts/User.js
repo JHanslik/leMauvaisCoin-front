@@ -38,6 +38,7 @@ const UserContextProvider = ({ children }) => {
         setToken,
         user,
         logout,
+        token,
     }
 
     return <UserContext.Provider value={value}>{children}</UserContext.Provider>

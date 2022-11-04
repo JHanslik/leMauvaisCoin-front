@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
 import { allProduct } from '../api/Product'
 import ProductsCards from '../components/ProductsCard'
 
@@ -21,14 +20,9 @@ const Home = () => {
     }
     return (
         <>
-           {products.map((product) => {
-                    return (
-                        <ProductsCards
-                            key={product.id}
-                            product={product}
-                        />
-                    );
-                })}
+            {products.map((product) => {
+                return <ProductsCards key={product.id} product={product} />
+            })}
         </>
     )
 }

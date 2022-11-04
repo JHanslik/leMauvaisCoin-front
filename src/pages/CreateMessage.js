@@ -16,7 +16,7 @@ import Button from '../components/Button'
 
 const Product = () => {
     const navigate = useNavigate()
-    const { user } = useContext(UserContext)
+    const { user, token } = useContext(UserContext)
     const [product, setProduct] = useState(null)
     const { id } = useParams()
 
@@ -29,6 +29,7 @@ const Product = () => {
         if (!user) {
             navigate('/login')
         }
+        // eslint-disable-next-line
     }, [user])
 
     const fetchProduct = async () => {
@@ -50,14 +51,13 @@ const Product = () => {
         }),
         onSubmit: (values) => {
             const data = {
-                title: values.title, 
-                content: values.content, 
+                title: values.title,
+                content: values.content,
                 receiverId: product?.UserId,
             }
-            createMessage(data, product.id)
+            createMessage(data, product.id, token)
         },
     })
-    
 
     if (!product) {
         return <p>loading</p>
