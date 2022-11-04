@@ -19,6 +19,7 @@ const Product = () => {
       if (!user) {
         navigate('/login')
       }
+      // eslint-disable-next-line
     }, [user])
 
     const formik = useFormik({
