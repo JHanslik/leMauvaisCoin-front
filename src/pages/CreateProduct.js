@@ -39,8 +39,8 @@ const Product = () => {
             price: Yup.string().required('Price is required'),
         }),
         onSubmit: async (values) => {
-            // await createProduct(values)
-            await createProductImage(values)
+            await createProduct(values)
+            // await createProductImage(values)
         },
     })
 
