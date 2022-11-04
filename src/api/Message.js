@@ -2,7 +2,7 @@ const token = localStorage.getItem('token')
 
 const createMessage = async (user) => {
     const request = await fetch(
-        `${process.env.REACT_APP_API_URL}/products/1/messages`,
+        `${process.env.REACT_APP_API_URL}products/1/messages`,
         {
             method: 'POST',
             headers: {
