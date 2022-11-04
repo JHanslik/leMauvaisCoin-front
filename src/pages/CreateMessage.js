@@ -63,27 +63,32 @@ const Product = () => {
         return <p>loading</p>
     }
     return (
-        <form onSubmit={formik.handleSubmit}>
-            <Input
-                type="text"
-                name="title"
-                placeholder="title"
-                value={formik.values.title}
-                handleChange={formik.handleChange}
-                error={formik.errors.title}
-            />
-            <Textarea
-                type="textarea"
-                name="content"
-                placeholder="content"
-                value={formik.values.content}
-                handleChange={formik.handleChange}
-                error={formik.errors.content}
-                row="10"
-            />
+        <>
+            <h2 className="text-center">
+                Send a message to ask about : {product.title}
+            </h2>
+            <form onSubmit={formik.handleSubmit}>
+                <Input
+                    type="text"
+                    name="title"
+                    placeholder="title"
+                    value={formik.values.title}
+                    handleChange={formik.handleChange}
+                    error={formik.errors.title}
+                />
+                <Textarea
+                    type="textarea"
+                    name="content"
+                    placeholder="content"
+                    value={formik.values.content}
+                    handleChange={formik.handleChange}
+                    error={formik.errors.content}
+                    row="10"
+                />
 
-            <Button text="Envoyer" type="submit" />
-        </form>
+                <Button text="Envoyer" type="submit" />
+            </form>
+        </>
     )
 }
 export default Product

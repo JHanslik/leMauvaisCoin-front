@@ -37,25 +37,28 @@ const Login = () => {
     })
     console.log(formik.values)
     return (
-        <form onSubmit={formik.handleSubmit}>
-            <Input
-                type="email"
-                name="email"
-                placeholder="email"
-                value={formik.values.email}
-                handleChange={formik.handleChange}
-                error={formik.errors.email}
-            />
-            <Input
-                type="password"
-                name="password"
-                placeholder="password"
-                value={formik.values.password}
-                handleChange={formik.handleChange}
-                error={formik.errors.password}
-            />
-            <Button text="Envoyer" type="submit" />
-        </form>
+        <>
+            <h2 className="text-center">Login</h2>
+            <form onSubmit={formik.handleSubmit}>
+                <Input
+                    type="email"
+                    name="email"
+                    placeholder="email"
+                    value={formik.values.email}
+                    handleChange={formik.handleChange}
+                    error={formik.errors.email}
+                />
+                <Input
+                    type="password"
+                    name="password"
+                    placeholder="password"
+                    value={formik.values.password}
+                    handleChange={formik.handleChange}
+                    error={formik.errors.password}
+                />
+                <Button text="Envoyer" type="submit" />
+            </form>
+        </>
     )
 }
 export default Login

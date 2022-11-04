@@ -5,7 +5,6 @@ import { signup } from '../api/Auth'
 
 import Button from '../components/Button'
 
-
 const Signup = () => {
     const formik = useFormik({
         initialValues: {
@@ -31,33 +30,36 @@ const Signup = () => {
     })
 
     return (
-        <form onSubmit={formik.handleSubmit}>
-            <Input
-                type="email"
-                name="email"
-                placeholder="email"
-                // value={formik.values.email}
-                handleChange={formik.handleChange}
-                error={formik.errors.email}
-            />
-            <Input
-                type="text"
-                name="pseudo"
-                placeholder="pseudo"
-                // value={formik.values.pseudo}
-                handleChange={formik.handleChange}
-                error={formik.errors.pseudo}
-            />
-            <Input
-                type="password"
-                name="password"
-                placeholder="password"
-                // value={formik.values.password}
-                handleChange={formik.handleChange}
-                error={formik.errors.password}
-            />
-            <Button text="Envoyer" type="submit"/>
-        </form>
+        <>
+            <h2 className="text-center">Signup</h2>
+            <form onSubmit={formik.handleSubmit}>
+                <Input
+                    type="email"
+                    name="email"
+                    placeholder="email"
+                    // value={formik.values.email}
+                    handleChange={formik.handleChange}
+                    error={formik.errors.email}
+                />
+                <Input
+                    type="text"
+                    name="pseudo"
+                    placeholder="pseudo"
+                    // value={formik.values.pseudo}
+                    handleChange={formik.handleChange}
+                    error={formik.errors.pseudo}
+                />
+                <Input
+                    type="password"
+                    name="password"
+                    placeholder="password"
+                    // value={formik.values.password}
+                    handleChange={formik.handleChange}
+                    error={formik.errors.password}
+                />
+                <Button text="Envoyer" type="submit" />
+            </form>
+        </>
     )
 }
 export default Signup
