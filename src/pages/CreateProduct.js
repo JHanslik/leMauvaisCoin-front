@@ -3,7 +3,7 @@ import * as Yup from 'yup'
 import Input from '../components/Input'
 import Textarea from '../components/Textarea'
 
-import { createProduct } from '../api/Product'
+import { createProduct, createProductImage } from '../api/Product'
 
 import { useEffect, useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
@@ -11,7 +11,6 @@ import { useNavigate } from 'react-router-dom'
 import { UserContext } from '../contexts/User'
 
 import Button from '../components/Button'
-
 
 const Product = () => {
     const navigate = useNavigate()
@@ -40,7 +39,8 @@ const Product = () => {
             price: Yup.string().required('Price is required'),
         }),
         onSubmit: async (values) => {
-            await createProduct(values)
+            // await createProduct(values)
+            await createProductImage(values)
         },
     })
 
@@ -72,13 +72,13 @@ const Product = () => {
                 error={formik.errors.price}
             />
             <Input
+                key={'product_photos'}
                 type="file"
-                name="picture"
+                name="name"
                 value={formik.values.picture}
                 handleChange={formik.handleChange}
             />
-            <Button text="Envoyer" type="submit"/>
-
+            <Button text="Envoyer" type="submit" />
         </form>
     )
 }

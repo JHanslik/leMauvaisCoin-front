@@ -1,57 +1,31 @@
-import { useFormik } from 'formik'
-import * as Yup from 'yup'
-import Input from '../components/Input'
-import Textarea from '../components/Textarea'
-
-// import { useContext } from 'react'
-// import { useNavigate } from 'react-router-dom'
-
-// import { UserContext } from '../contexts/User'
+import { useEffect, useState } from 'react'
+import { useParams } from 'react-router-dom'
+import { oneProduct } from '../api/Product'
+import ProductArticle from '../components/ProductArticle'
 
 const Product = () => {
-    const formik = useFormik({
-        initialValues: {
-            title: 'Test Title',
-            content:
-                'minimum8minimum8minimum8minimum8minimum8minimum8minimum8minimum8minimum8minimum8minimum8minimum8minimum8minimum8minimum8minimum8minimum8minimum8minimum8',
-            picture: '',
-        },
-        validationSchema: Yup.object({
-            title: Yup.string().required('Your title is required (test)'),
-            content: Yup.string()
-                .required('Content is required')
-                .min(50, 'Content trop court'),
-        }),
-        onSubmit: async (values) => {},
-    })
+    const [product, setProduct] = useState(null)
+    const { id } = useParams()
 
+    useEffect(() => {
+        fetchProduct()
+        // eslint-disable-next-line
+    }, [])
+
+    const fetchProduct = async () => {
+        const request = await oneProduct(id)
+        setProduct(request)
+        console.log(request)
+    }
+
+    if (!product) {
+        return <p>loading</p>
+    }
     return (
-        <form onSubmit={formik.handleSubmit}>
-            <Input
-                type="text"
-                name="title"
-                placeholder="title"
-                value={formik.values.title}
-                handleChange={formik.handleChange}
-                error={formik.errors.title}
-            />
-            <Textarea
-                type="textarea"
-                name="content"
-                placeholder="content"
-                value={formik.values.content}
-                handleChange={formik.handleChange}
-                error={formik.errors.content}
-                row="10"
-            />
-            <Input
-                type="file"
-                name="picture"
-                value={formik.values.picture}
-                handleChange={formik.handleChange}
-            />
-            <button type="submit">Envoyer</button>
-        </form>
+        <>
+            <ProductArticle product={product} />
+        </>
     )
 }
+
 export default Product

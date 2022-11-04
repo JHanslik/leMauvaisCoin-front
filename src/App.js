@@ -14,11 +14,11 @@ import Header from './components/Header'
 const App = () => {
     return (
         <BrowserRouter>
-        <Header/>
+            <Header />
             <UserContextProvider>
                 <Routes>
                     <Route path="/" element={<Home />} />
-                    <Route path="/product" element={<Product />} />
+                    <Route path="/products/:id" element={<Product />} />
                     <Route path="/create-product" element={<CreateProduct />} />
                     <Route path="/signup" element={<Signup />} />
                     <Route path="/message-sent" element={<MessagesSent />} />

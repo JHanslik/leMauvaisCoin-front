@@ -30,7 +30,9 @@ const Login = () => {
         onSubmit: async (values) => {
             const { token } = await login(values)
             setToken(token)
-            navigate('/')
+            if (token) {
+                navigate('/')
+            }
         },
     })
 
@@ -52,7 +54,7 @@ const Login = () => {
                 handleChange={formik.handleChange}
                 error={formik.errors.password}
             />
-            <Button text="Envoyer" type="submit"/>
+            <Button text="Envoyer" type="submit" />
         </form>
     )
 }
