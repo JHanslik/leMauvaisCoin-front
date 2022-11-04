@@ -48,7 +48,6 @@ const oneProduct = async (id) => {
         `${process.env.REACT_APP_API_URL}products/${id}`
     )
     const response = await request.json()
-    console.log(response)
     return response
 }
 

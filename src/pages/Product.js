@@ -15,7 +15,6 @@ const Product = () => {
     const fetchProduct = async () => {
         const request = await oneProduct(id)
         setProduct(request)
-        console.log(request)
     }
 
     if (!product) {
