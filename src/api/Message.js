@@ -16,4 +16,19 @@ const createMessage = async (values, id, token) => {
     return response
 }
 
-export { createMessage }
+const allMessages = async (token) => {
+    const request = await fetch(
+        `${process.env.REACT_APP_API_URL}user/messages`,
+        {
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${token}`,
+            },
+        }
+    )
+    const response = await request.json()
+
+    return response
+}
+
+export { createMessage, allMessages }

@@ -33,19 +33,20 @@ const User = () => {
     return (
         <>
             <section>
-                <h2>{user.pseudo}</h2>
-                <p>{user.email}</p>
-                <Link to={`/`}>
-                    <Button text="Message send" type="button" />
+                <h2 className="text-center">Username : {user.pseudo}</h2>
+                <p className="text-center">Email : {user.email}</p>
+                <Link to={`/user/message-sent`}>
+                    <Button text="Message sent" type="button" />
                 </Link>
             </section>
             <section>
-                {/* {products.filter((product) => {
-                    const filteredProducts = product.UserId === user.id
-                    return filteredProducts.map((product) => {
-                        return <ProductsCard product={product} />
-                    })
-                })} */}
+                {products
+                    .filter((product) => product.UserId === user.id)
+                    ?.map((product) => {
+                        return (
+                            <ProductsCard key={product.id} product={product} />
+                        )
+                    })}
             </section>
         </>
     )
