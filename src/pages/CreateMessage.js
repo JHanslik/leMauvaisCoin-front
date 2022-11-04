@@ -41,19 +41,23 @@ const Product = () => {
             title: 'Test Title',
             content:
                 'minimum8minimum8minimum8minimum8minimum8minimum8minimum8minimum8minimum8minimum8minimum8minimum8minimum8minimum8minimum8minimum8minimum8minimum8minimum8',
-            receiverId: `${product?.UserId}`,
         },
         validationSchema: Yup.object({
             title: Yup.string().required('Your title is required (test)'),
             content: Yup.string()
                 .required('Content is required')
                 .min(50, 'Content trop court'),
-            receiverId: Yup.string().required('Receiver is required'),
         }),
         onSubmit: (values) => {
-            createMessage(values)
+            const data = {
+                title: values.title, 
+                content: values.content, 
+                receiverId: product?.UserId,
+            }
+            createMessage(data)
         },
     })
+
 
     if (!product) {
         return <p>loading</p>
