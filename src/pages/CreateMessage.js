@@ -3,9 +3,12 @@ import * as Yup from 'yup'
 import Input from '../components/Input'
 import Textarea from '../components/Textarea'
 
+import { useParams } from 'react-router-dom'
+import { oneProduct } from '../api/Product'
+
 import { createMessage } from '../api/Message'
 
-import { useEffect, useContext } from 'react'
+import { useEffect, useContext, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import { UserContext } from '../contexts/User'
@@ -13,34 +16,52 @@ import Button from '../components/Button'
 
 const Product = () => {
     const navigate = useNavigate()
-    const { user } = useContext(UserContext)
-  
+    const { user, token } = useContext(UserContext)
+    const [product, setProduct] = useState(null)
+    const { id } = useParams()
+
     useEffect(() => {
-      if (!user) {
-        navigate('/login')
-      }
+        fetchProduct()
+        // eslint-disable-next-line
+    }, [])
+
+    useEffect(() => {
+        if (!user) {
+            navigate('/login')
+        }
+        // eslint-disable-next-line
     }, [user])
+
+    const fetchProduct = async () => {
+        const request = await oneProduct(id)
+        setProduct(request)
+    }
 
     const formik = useFormik({
         initialValues: {
             title: 'Test Title',
-            content: 'minimum8minimum8minimum8minimum8minimum8minimum8minimum8minimum8minimum8minimum8minimum8minimum8minimum8minimum8minimum8minimum8minimum8minimum8minimum8',
-            receiverId: '2'
+            content:
+                'minimum8minimum8minimum8minimum8minimum8minimum8minimum8minimum8minimum8minimum8minimum8minimum8minimum8minimum8minimum8minimum8minimum8minimum8minimum8',
         },
         validationSchema: Yup.object({
-            title: Yup.string()
-                .required('Your title is required (test)'),
+            title: Yup.string().required('Your title is required (test)'),
             content: Yup.string()
                 .required('Content is required')
                 .min(50, 'Content trop court'),
-            receiverId: Yup.string()
-                .required('Receiver is required')
         }),
         onSubmit: (values) => {
-            createMessage(values) 
+            const data = {
+                title: values.title,
+                content: values.content,
+                receiverId: product?.UserId,
+            }
+            createMessage(data, product.id, token)
         },
     })
 
+    if (!product) {
+        return <p>loading</p>
+    }
     return (
         <form onSubmit={formik.handleSubmit}>
             <Input
@@ -59,9 +80,9 @@ const Product = () => {
                 handleChange={formik.handleChange}
                 error={formik.errors.content}
                 row="10"
-            /> 
-            
-            <Button text="Envoyer" type="submit"/>
+            />
+
+            <Button text="Envoyer" type="submit" />
         </form>
     )
 }

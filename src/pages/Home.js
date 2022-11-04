@@ -1,8 +1,30 @@
-import React from 'react'
+import { useEffect, useState } from 'react'
+import { allProduct } from '../api/Product'
+import ProductsCards from '../components/ProductsCard'
 
 const Home = () => {
-  return (
-    <div>Home</div>
-  )
+    const [products, setProducts] = useState(null)
+
+    useEffect(() => {
+        fetchProduct()
+        // eslint-disable-next-line
+    }, [])
+
+    const fetchProduct = async () => {
+        const request = await allProduct()
+        setProducts(request)
+    }
+
+    if (!products) {
+        return <p>loading</p>
+    }
+    return (
+        <>
+            {products.map((product) => {
+                return <ProductsCards key={product.id} product={product} />
+            })}
+        </>
+    )
 }
+
 export default Home

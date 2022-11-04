@@ -1,6 +1,4 @@
-const token = localStorage.getItem('token')
-
-const createProduct = async (value) => {
+const createProduct = async (value, token) => {
     const request = await fetch(`${process.env.REACT_APP_API_URL}products/`, {
         method: 'POST',
         headers: {
@@ -15,7 +13,7 @@ const createProduct = async (value) => {
     return response
 }
 
-const createProductImage = async (value) => {
+const createProductImage = async (value, token) => {
     console.log('on')
     const request = await fetch(
         `${process.env.REACT_APP_API_URL}products/photos`,
@@ -48,7 +46,6 @@ const oneProduct = async (id) => {
         `${process.env.REACT_APP_API_URL}products/${id}`
     )
     const response = await request.json()
-    console.log(response)
     return response
 }
 
